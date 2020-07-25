@@ -4,7 +4,6 @@ export default function cart (state = [], action) {
   switch (action.type) {
     case 'ADD_TO_CART':
       return produce(state, draft => {
-        console.log(state)
         const pokemonIndex = draft.findIndex(p => p.id === action.pokemon.id);
         if (pokemonIndex >= 0) {
           draft[pokemonIndex].amount += 1

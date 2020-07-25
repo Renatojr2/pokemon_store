@@ -7,8 +7,13 @@ export const Container = styled.div`
   padding: 15px;
   width: 62%;
 
+  @media (max-width: 1085px) {
+    flex-direction: column-reverse;
+    width: 90%;
+    margin: 0 auto;
 
-`
+  }
+`;
 
 export const ProductList = styled.ul`
   margin-top: 40px;
@@ -19,6 +24,23 @@ export const ProductList = styled.ul`
   grid-gap: 10px;
 
   list-style: none;
+
+  @media (max-width: 1085px) {
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 50px;
+    
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 auto;
+    width: 100%;
+    margin-top: 50px;
+    
+  }
+  @media (max-width: 450px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
   
   li {
 

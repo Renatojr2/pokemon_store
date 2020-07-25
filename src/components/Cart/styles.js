@@ -13,19 +13,32 @@ background: #fff;
 
 width: 500px;
 
+
 border-radius: 4px;
 margin-top: 60px;
+
+@media (max-width: 1085px) {
+  position: relative;
+  top: 0;
+  left: 0;
+ 
+  width: 100%;
+  height: 400px ;
+  
+  }
 >div {
   display: flex;
-  padding: 10px;
+  padding: 12px;
   justify-content: space-around;
   align-items: center;
   span {
     font-size: 18px;
     color: #00b341;
   }
+  @media (max-width: 450px) {
+    padding: 8px;
+  }
 }
-
 
 footer {
   margin-top: 20px;
@@ -47,6 +60,10 @@ footer {
     &:hover {
       background: ${darken(0.04, '#00b341')}
     }
+    @media (max-width: 450px) {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
 
   }
 }
@@ -60,10 +77,25 @@ thead th {
   text-align: center;
   color: #101010;
 
-}
-tbody {
+  @media (max-width: 1085px) {
+  padding: 8px;
+  top: 0;
+  left: 0;
+ 
+  width: 30%;
   
+  }
+  @media (max-width: 450px) {
+  padding: 8px;
+  top: 0;
+  left: 0;
+ 
+  width: 5%;
+  
+  }
+
 }
+
 
 tbody td {
   padding: 9px;
@@ -72,7 +104,13 @@ tbody td {
 
 img {
   width: 80px;
+  @media (max-width: 450px) {
+    width: 60px;
+  
+  }
+
 }
+
 
 strong {
   color: #333;
@@ -84,6 +122,9 @@ span {
 
   font-size: 18px;
   font-weight: bold;
+  @media (max-width: 450px) {
+    font-size: 14px;
+  }
 }
 
 div {
@@ -94,9 +135,13 @@ div {
     border: 1px solid #ccc;
     border-radius: 3px;
     color: #333;
-    padding: 4px;
+    padding: 2px;
     width: 40px;
     text-align: center;
+    @media (max-width: 450px) {
+    width: 30px;
+  }
+    
   }
 
 }
@@ -122,6 +167,10 @@ export const Total = styled.div`
   strong {
     font-size: 26px;
     margin-left: 6px;
+    @media (max-width: 450px) {
+    font-size: 20px;
+    margin-left: 4px;
+  }
   }
 `;
 

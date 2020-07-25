@@ -16,16 +16,12 @@ export default function CartComponent () {
   const cart = useSelector(state =>
     state.cart.map(pokemon => ({
       ...pokemon,
-      subtotal: format(pokemon.price * pokemon.amount)
+      subtotal: format(pokemon.price * pokemon.amount),
+      total: state.cart.reduce((total, pokemon) => {
+        return total + pokemon.price * pokemon.amount
+      })
     }))
   )
-  const total = useSelector(state => {
-    format(
-      state.cart.reduce((total, pokemon) => {
-        return total + pokemon.price * pokemon.amount
-      }, 0)
-    )
-  })
 
   function increment (pokemon) {
     dispatch(updateAmount(pokemon.id, pokemon.amount + 1))
@@ -39,17 +35,18 @@ export default function CartComponent () {
         <h1>Meu Carrinho</h1>
         <div>
           <MdShoppingBasket size={30} />
-            <span>{cart.length}</span>
-         
+          <span>{cart.length}</span>
         </div>
       </div>
       <ProductCart>
         <thead>
-          <th />
-          <th>produto</th>
-          <th>qtd</th>
-          <th>preço</th>
-          <th />
+          <tr>
+            <th />
+            <th>produto</th>
+            <th>qtd</th>
+            <th>preço</th>
+            <th />
+          </tr>
         </thead>
 
         <tbody>
@@ -60,7 +57,7 @@ export default function CartComponent () {
               </td>
               <td>
                 <strong>{pokemon.name}</strong>
-                <span>{pokemon.price}</span>
+                <span>{pokemon.priceFormated}</span>
               </td>
               <td>
                 <div>
@@ -103,7 +100,7 @@ export default function CartComponent () {
 
         <Total>
           <span>Total</span>
-          <strong>1254,00</strong>
+          <strong></strong>
         </Total>
       </footer>
     </Container>
