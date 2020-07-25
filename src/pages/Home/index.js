@@ -3,7 +3,7 @@ import api from '../../services/api';
 import { Container, ProductList } from './styles';
 import { MdAddShoppingCart } from 'react-icons/md';
 import Cart from '../../components/Cart';
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {addToCart} from '../../store/modules/cart/actions';
 import {format} from '../../util/format';
 
