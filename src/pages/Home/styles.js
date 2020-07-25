@@ -2,26 +2,28 @@ import styled from 'styled-components';
 import {darken} from 'polished';
 
 
-export const Container = styled.section`
+export const Container = styled.div`
+  display: flex;
+  padding: 15px;
+  width: 62%;
 
-  max-width: 1100px;
-  margin: 0px auto;
+
 `
 
 export const ProductList = styled.ul`
-  margin-top: 60px;
-  height: 200px;
+  margin-top: 40px;
+
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 
   list-style: none;
   
   li {
 
     box-shadow: 0 0 10px rgba(0,0,0, .1);
-    padding: 20px;
+    padding: 15px;
     background: #fff;
 
     border-radius: 4px;
@@ -31,12 +33,12 @@ export const ProductList = styled.ul`
 
 
     img {
-      height: 150px;
+      height: 90px;
     }
 
     h2 {
-      font-size: 26px;
-      margin-bottom: 30px
+      font-size: 24px;
+      margin: 20px
     }
 
     p {
@@ -52,8 +54,8 @@ export const ProductList = styled.ul`
 
 
     > span {
-      font-size: 18px;
-      margin: 5px 0 10px;
+      font-size: 16px;
+      margin: 5px 0 15px;
       font-weight: bold;
         
       

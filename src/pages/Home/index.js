@@ -1,59 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import api from '../../services/api';
-import {useSelector, useDispatch} from 'react-redux'
-
 import { Container, ProductList } from './styles';
 import { MdAddShoppingCart } from 'react-icons/md';
+import Cart from '../../components/Cart';
+import {useSelector, useDispatch} from 'react-redux';
+import {addToCart} from '../../store/modules/cart/actions';
+import {format} from '../../util/format';
 
 export default function HomePage () {
-  const [pokemonImage, setPokemonImage] = useState([]);
-  const [pokeballs, setPokeballs] = useState([]);
-  const cartSize = useSelector(state => state.cart.length)
-
+  const [ pokemons, setPokemons] = useState([]);
+  const dispatch = useDispatch()
  
 
+
   useEffect(() => {
-    getPokemons();
-  }, []);
-
-  async function getPokemons () {
-    for (let i = 1; i < 120; i += 6) {
-      let resource = await api.get(`/${i}`);
-      setPokeballs(state => {
-        return [...state, resource.data];
+    async function getPokemons () {
+      const poke = []
+      for (let i = 0; i < 54; i += 6) {
+        const resource = await api.get(`/${i + 1}`)
+        const data = await resource.data
+        poke.push(data)
+      }
+      const pokebola = poke.map(({ id, name, sprites}) => {
+        return {
+          id,
+          name,
+          image: sprites.front_default,
+          description: `O Pokemon que você precisa sua força é ${name === 'pikachu' ? id * 200: id * 2}`,
+          price: name === 'pikachu' ? 300 * (id + 1):100 * (id + 1),
+        }
       })
+      setPokemons(pokebola)
     }
+    getPokemons()
+  }, [])
+
+  function handleAddPokemon(pokemon) {
+    dispatch(addToCart(pokemon))
   }
 
-  const handlePokemonToCart = pokemon => {
-    const dispatch = useDispatch()
-    dispatch({
-      type: 'ADD_TO_CART',
-      pokemon,
-    })
-  }
+ 
 
   return (
     <Container>
       <ProductList>
-        {pokeballs.map(pokeball => (
-          <li key={pokeball.id}>
-            {pokeball.sprites ? (
-              <img src={pokeball.sprites.front_default} alt={pokeball.name} />
+        {pokemons.map(pokemon => (
+          <li key={pokemon.id}>
+            {pokemon.image ? (
+              <img src={pokemon.image} alt={pokemon.name} />
             ) : null}
-            <h2>{pokeball.name}</h2>
-            <p>Um pokemon pra quem gosta de mato</p>
+            <h2>{pokemon.name}</h2>
+            <p>{pokemon.description}</p>
             <strong>Muito Bonito</strong>
-            <span>R$129,00</span>
-            <button type='button' onClick={handlePokemonToCart(pokeball)}>
+            <span>{pokemon.price}</span>
+            <button type='button' onClick={()=>{
+              handleAddPokemon(pokemon)
+            }}>
               <div>
-                <MdAddShoppingCart size={16} color='#efefef' />3
+                <MdAddShoppingCart size={16} color='#efefef' />
               </div>
               <span>Adicionar ao carrinho</span>
             </button>
           </li>
         ))}
       </ProductList>
+      <Cart />
     </Container>
   )
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+
 
 export const Container = styled.header`
   width: 80%;
@@ -48,7 +48,7 @@ export const Form = styled.form`
   }
 `
 
-export const Cart = styled(Link)`
+export const Cart = styled.a`
   display: flex;
   align-items: center;
   transform: opacity 0.2s;

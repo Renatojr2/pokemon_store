@@ -3,17 +3,32 @@ import {darken} from 'polished';
 
 
 export const Container = styled.section`
-width: 70%;
-padding: 30px;
+overflow: scroll;
+position: fixed;
+right: 10px;
+bottom: 40px;
+top: 135px;  
+padding: 20px;
 background: #fff;
 
+width: 500px;
+
 border-radius: 4px;
-margin: 40px auto 20px;
+margin-top: 60px;
+>div {
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+  align-items: center;
+  span {
+    font-size: 18px;
+    color: #00b341;
+  }
+}
 
 
 footer {
-  margin-top: 30px;
-
+  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,21 +54,24 @@ footer {
 `;
 
 export const ProductCart = styled.table`
-width: 100%;
 
 thead th {
-  padding: 12px;
-  text-align: left;
+  padding: 9px;
+  text-align: center;
   color: #101010;
+
+}
+tbody {
+  
 }
 
 tbody td {
-  padding: 12px;
+  padding: 9px;
   border-bottom: 1px solid #ccc;
 }
 
 img {
-  width: 100px;
+  width: 80px;
 }
 
 strong {
@@ -62,9 +80,9 @@ strong {
 }
 span {
   display: block;
-  margin-top: 5px;
+  margin-top: 4px;
 
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -76,8 +94,9 @@ div {
     border: 1px solid #ccc;
     border-radius: 3px;
     color: #333;
-    padding: 5px;
-    width: 50px;
+    padding: 4px;
+    width: 40px;
+    text-align: center;
   }
 
 }
@@ -88,6 +107,7 @@ div {
   }
 
 `;
+
 
 export const Total = styled.div`
   display: flex;
@@ -100,7 +120,8 @@ export const Total = styled.div`
   }
 
   strong {
-    font-size: 28px;
+    font-size: 26px;
     margin-left: 6px;
   }
 `;
+
