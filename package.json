@@ -1,12 +1,14 @@
 {
   "name": "pokemon_store",
   "version": "0.1.0",
+  "homepage": "https://renatojr2.github.io/pokemon_store/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "gh-pages": "^3.1.0",
     "immer": "^7.0.5",
     "polished": "^3.6.5",
     "react": "^16.13.1",
@@ -15,10 +17,13 @@
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-toastify": "^6.0.8",
     "redux": "^4.0.5",
-    "styled-components": "^5.1.1"
+    "styled-components": "4.4.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy":"gh-pages -b master -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

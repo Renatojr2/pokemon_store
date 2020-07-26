@@ -126,3 +126,50 @@ export const ProductList = styled.ul`
   }
 
 `;
+
+export const HeaderContainer = styled.header`
+  width: 80%;
+  height: 80px;
+  margin: 30px auto;
+
+  padding: 0px 20px;
+
+  border-radius: 40px;
+
+  background: #ff2400;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    width: 40%;
+    background: white;
+  }
+`
+
+export const Form = styled.form`
+  width: 26rem;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  right: 55px;
+
+  input {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+
+    border: none;
+    border-radius: 4px;
+  }
+
+  svg {
+    position: relative;
+    top: 2px;
+    left: -35px;
+  }
+`

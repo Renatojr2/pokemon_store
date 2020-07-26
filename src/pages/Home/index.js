@@ -1,17 +1,28 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState} from 'react';
 import api from '../../services/api';
-import { Container, ProductList } from './styles';
-import { MdAddShoppingCart } from 'react-icons/md';
-import Cart from '../../components/Cart';
+import { Container, ProductList, HeaderContainer, Form } from './styles';
+import { MdAddShoppingCart, MdSearch } from 'react-icons/md';
+import CartComponent from '../../components/Cart';
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../../store/modules/cart/actions';
 import {format} from '../../util/format';
+import logo from '../../assets/image/logo.png';
 
 export default function HomePage () {
   const [ pokemons, setPokemons] = useState([]);
+  const [inputValue, setInputValue] = useState('')
   const dispatch = useDispatch()
- 
 
+ 
+  useEffect(()=> {
+    let pokemonFilter = pokemons.filter(pokemon => {
+      if(pokemon.name.includes(inputValue)) {
+        return pokemon
+      } 
+    })
+    setPokemons(pokemonFilter)
+    
+  }, [inputValue])
 
   useEffect(() => {
     async function getPokemons () {
@@ -43,6 +54,17 @@ export default function HomePage () {
  
 
   return (
+    <>
+      <HeaderContainer>
+      <a to='/'>
+        <img src={logo} alt='Logo da empresa' />
+      </a>
+
+      <Form>
+        <input type='text' onChange={event => setInputValue(event.target.value)}  />
+        <MdSearch size={30} color='#333' />
+      </Form>
+    </HeaderContainer>
     <Container>
       <ProductList>
         {pokemons.map(pokemon => (
@@ -65,7 +87,8 @@ export default function HomePage () {
           </li>
         ))}
       </ProductList>
-      <Cart />
+      <CartComponent />
     </Container>
+    </>
   )
 }
