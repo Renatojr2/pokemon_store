@@ -16,16 +16,22 @@ export default function HomePage () {
   console.log(inputValue)
  
   useEffect(()=> {
-    const filterPokemon = pokemons.filter(pokemon => {
-      return pokemon.name.includes(inputValue)  
-    })
-    setPokemons(filterPokemon)
+    function filterPokemon(pokemons) {
+      const filterPokemon = pokemons.filter(pokemon => {
+        return pokemon.name.includes(inputValue)  
+      })
+      setPokemons(filterPokemon)
+    }
+
+    filterPokemon(pokemons)
+
+
   },[inputValue])
 
   useEffect(() => {
     async function getPokemons () {
       const poke = []
-      for (let i = 11; i < 28; i += 2) {
+      for (let i = 4; i < 28; i += 2) {
         const resource = await api.get(`/${i + 1}`)
         const data = await resource.data
         poke.push(data)
