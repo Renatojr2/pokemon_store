@@ -36,6 +36,10 @@ export default function cart (state = [], action) {
         }
       })
     }
+
+    case 'BUY_SUCCESS': 
+      return state = []
+ 
     default:
       return state
   }

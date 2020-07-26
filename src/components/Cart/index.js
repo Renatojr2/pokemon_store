@@ -1,15 +1,16 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   MdRemoveCircleOutline,
   MdAddCircleOutline,
   MdDelete,
   MdShoppingBasket
-} from 'react-icons/md'
+} from 'react-icons/md';
 
-import { Container, ProductCart, Total } from './styles'
-import { removeFromCart, updateAmount } from '../../store/modules/cart/actions'
-import { format } from '../../util/format'
+import { Container, ProductCart, Total } from './styles';
+import { removeFromCart, updateAmount, BuySuccess } from '../../store/modules/cart/actions';
+import { format } from '../../util/format';
 
 export default function CartComponent () {
   const dispatch = useDispatch()
@@ -17,17 +18,36 @@ export default function CartComponent () {
     state.cart.map(pokemon => ({
       ...pokemon,
       subtotal: format(pokemon.price * pokemon.amount),
-      total: state.cart.reduce((total, pokemon) => {
-        return total + pokemon.price * pokemon.amount
-      })
     }))
   )
+  const total = useSelector(state =>
+    format(state.cart.reduce((total, pokemon) => {
+      return total + pokemon.price * pokemon.amount
+    
+    }, 0)))
+   
+   
 
   function increment (pokemon) {
     dispatch(updateAmount(pokemon.id, pokemon.amount + 1))
   }
   function decrement (pokemon) {
     dispatch(updateAmount(pokemon.id, pokemon.amount - 1))
+  }
+
+  function handleBuySuccess() {
+  toast.success('Compra finalizada! Obrigado! \nvocê ganhou de volta R$ 25,00', {
+      position: 'bottom-right',
+      autoClose: false,
+      bodyStyle: {
+        width: 80,
+        height: 150,
+        padding: 20,
+        fontSize: 20,
+        lineHeight: 2
+      }
+    })
+    dispatch(BuySuccess())
   }
   return (
     <Container>
@@ -64,7 +84,7 @@ export default function CartComponent () {
                   <button type='button'>
                     <MdRemoveCircleOutline
                       size={20}
-                      color='#00b341'
+                      color='#4B43A4'
                       onClick={() => decrement(pokemon)}
                     />
                   </button>
@@ -72,7 +92,7 @@ export default function CartComponent () {
                   <button type='button'>
                     <MdAddCircleOutline
                       size={20}
-                      color='#00b341'
+                      color='#4B43A4'
                       onClick={() => increment(pokemon)}
                     />
                   </button>
@@ -85,7 +105,7 @@ export default function CartComponent () {
                 <button type='button'>
                   <MdDelete
                     size={20}
-                    color='red'
+                    color='#4B43A4'
                     onClick={() => dispatch(removeFromCart(pokemon.id))}
                   />
                 </button>
@@ -96,11 +116,11 @@ export default function CartComponent () {
       </ProductCart>
 
       <footer>
-        <button type='button'>Finalizar compra</button>
+        <button type='button' onClick={()=> handleBuySuccess()}>Finalizar compra</button>
 
         <Total>
           <span>Total</span>
-          <strong></strong>
+          <strong>{total}</strong>
         </Total>
       </footer>
     </Container>

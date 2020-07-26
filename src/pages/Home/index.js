@@ -1,33 +1,31 @@
 import React, { useEffect, useState} from 'react';
 import api from '../../services/api';
 import { Container, ProductList, HeaderContainer, Form } from './styles';
-import { MdAddShoppingCart, MdSearch } from 'react-icons/md';
+import { MdSearch } from 'react-icons/md';
 import CartComponent from '../../components/Cart';
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../../store/modules/cart/actions';
 import {format} from '../../util/format';
 import logo from '../../assets/image/logo.png';
 
+
 export default function HomePage () {
   const [ pokemons, setPokemons] = useState([]);
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState([])
   const dispatch = useDispatch()
-
+  console.log(inputValue)
  
   useEffect(()=> {
-    let pokemonFilter = pokemons.filter(pokemon => {
-      if(pokemon.name.includes(inputValue)) {
-        return pokemon
-      } 
+    const filterPokemon = pokemons.filter(pokemon => {
+      return pokemon.name.includes(inputValue)  
     })
-    setPokemons(pokemonFilter)
-    
-  }, [inputValue])
+    setPokemons(filterPokemon)
+  },[inputValue])
 
   useEffect(() => {
     async function getPokemons () {
       const poke = []
-      for (let i = 0; i < 54; i += 6) {
+      for (let i = 11; i < 28; i += 2) {
         const resource = await api.get(`/${i + 1}`)
         const data = await resource.data
         poke.push(data)
@@ -38,8 +36,8 @@ export default function HomePage () {
           name,
           image: sprites.front_default,
           description: `O Pokemon que você precisa sua força é ${name === 'pikachu' ? id * 200: id * 2}`,
-          price: name === 'pikachu' ? 300 * (id + 1):100 * (id + 1),
-          priceFormated: format(name === 'pikachu' ? 300 * (id + 1):100 * (id + 1)),
+          price: 100 * (id + 1),
+          priceFormated: format( 100 * (id + 1)),
         }
       })
       setPokemons(pokebola)
@@ -66,6 +64,7 @@ export default function HomePage () {
       </Form>
     </HeaderContainer>
     <Container>
+    <CartComponent />
       <ProductList>
         {pokemons.map(pokemon => (
           <li key={pokemon.id}>
@@ -79,15 +78,11 @@ export default function HomePage () {
             <button type='button' onClick={()=>{
               handleAddPokemon(pokemon)
             }}>
-              <div>
-                <MdAddShoppingCart size={16} color='#efefef' />
-              </div>
               <span>Adicionar ao carrinho</span>
             </button>
           </li>
         ))}
       </ProductList>
-      <CartComponent />
     </Container>
     </>
   )

@@ -17,3 +17,9 @@ export function updateAmount(id, amount) {
     amount
   }
 }
+
+export function BuySuccess() {
+  return {
+    type: 'BUY_SUCCESS',
+  }
+}

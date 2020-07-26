@@ -88,7 +88,7 @@ export const ProductList = styled.ul`
       background: #00b341;
       border: none;
       border-radius: 4px;
-    
+      padding: 10px;
 
       overflow: hidden;
 
@@ -144,7 +144,6 @@ export const HeaderContainer = styled.header`
 
   img {
     width: 40%;
-    background: white;
   }
 `
 
