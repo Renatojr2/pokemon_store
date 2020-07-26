@@ -41,7 +41,7 @@ export default function HomePage () {
           id,
           name,
           image: sprites.front_default,
-          description: `O Pokemon que você precisa sua força é ${name === 'pikachu' ? id * 200: id * 2}`,
+          description: `Força -  ${name === 'pikachu' ? id * 200: id * 2}`,
           price: 100 * (id + 1),
           priceFormated: format( 100 * (id + 1)),
         }
@@ -78,8 +78,7 @@ export default function HomePage () {
               <img src={pokemon.image} alt={pokemon.name} />
             ) : null}
             <h2>{pokemon.name}</h2>
-            <p>{pokemon.description}</p>
-            <strong>Muito Bonito</strong>
+            <strong>{pokemon.description}</strong>
             <span>{pokemon.priceFormated}</span>
             <button type='button' onClick={()=>{
               handleAddPokemon(pokemon)

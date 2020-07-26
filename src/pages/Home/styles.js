@@ -63,12 +63,6 @@ export const ProductList = styled.ul`
       margin: 20px
     }
 
-    p {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 10px
-      
-    }
 
     >strong {
       color: #333;
