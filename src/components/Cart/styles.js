@@ -11,7 +11,7 @@ top: 135px;
 padding: 20px;
 background: #fff;
 
-width: 500px;
+width: 630px;
 
 
 border-radius: 4px;
@@ -51,6 +51,7 @@ footer {
     &:hover {
       background: ${darken(0.04, '#00b341')}
     }
+
     @media (max-width: 450px) {
     padding: 6px 14px;
     font-size: 8px;
@@ -111,7 +112,9 @@ thead th {
   
   }
 
+
 }
+
 tbody td.nameGroup {
   @media (max-width: 450px) {
     display: none;
@@ -132,8 +135,8 @@ img {
   width: 80px;
 
   @media (max-width: 450px) {
-    max-width: 40px;
-    height: 50px;
+    max-width: 30px;
+    height: 40px;
   
   }
 
