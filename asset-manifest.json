@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/pokemon_store/static/js/main.3c15b471.chunk.js",
-    "main.js.map": "/pokemon_store/static/js/main.3c15b471.chunk.js.map",
+    "main.js": "/pokemon_store/static/js/main.d03ba193.chunk.js",
+    "main.js.map": "/pokemon_store/static/js/main.d03ba193.chunk.js.map",
     "runtime-main.js": "/pokemon_store/static/js/runtime-main.21d83d94.js",
     "runtime-main.js.map": "/pokemon_store/static/js/runtime-main.21d83d94.js.map",
     "static/css/2.d34346ea.chunk.css": "/pokemon_store/static/css/2.d34346ea.chunk.css",
     "static/js/2.9ae4308e.chunk.js": "/pokemon_store/static/js/2.9ae4308e.chunk.js",
     "static/js/2.9ae4308e.chunk.js.map": "/pokemon_store/static/js/2.9ae4308e.chunk.js.map",
     "index.html": "/pokemon_store/index.html",
-    "precache-manifest.da3d14dbfa6f66181aee8f7db53a9373.js": "/pokemon_store/precache-manifest.da3d14dbfa6f66181aee8f7db53a9373.js",
+    "precache-manifest.446f02e39fe0f0f8fa6aa55bcef97c67.js": "/pokemon_store/precache-manifest.446f02e39fe0f0f8fa6aa55bcef97c67.js",
     "service-worker.js": "/pokemon_store/service-worker.js",
     "static/css/2.d34346ea.chunk.css.map": "/pokemon_store/static/css/2.d34346ea.chunk.css.map",
     "static/js/2.9ae4308e.chunk.js.LICENSE.txt": "/pokemon_store/static/js/2.9ae4308e.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.21d83d94.js",
     "static/css/2.d34346ea.chunk.css",
     "static/js/2.9ae4308e.chunk.js",
-    "static/js/main.3c15b471.chunk.js"
+    "static/js/main.d03ba193.chunk.js"
   ]
 }
