@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 62%;
 
   @media (max-width: 1085px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 90%;
     margin: 0 auto;
 
@@ -135,6 +135,13 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 450px) {
+    width: 100%;
+    margin: 0;
+    border-radius:0;
+
+  }
 
   img {
     width: 40%;

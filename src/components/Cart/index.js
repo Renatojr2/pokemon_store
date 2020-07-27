@@ -8,7 +8,7 @@ import {
   MdShoppingBasket
 } from 'react-icons/md';
 
-import { Container, ProductCart, Total } from './styles';
+import { Container, ProductCart, Total, Header } from './styles';
 import { removeFromCart, updateAmount, BuySuccess } from '../../store/modules/cart/actions';
 import { format } from '../../util/format';
 
@@ -51,13 +51,13 @@ export default function CartComponent () {
   }
   return (
     <Container>
-      <div>
+      <Header>
         <h1>Meu Carrinho</h1>
         <div>
           <MdShoppingBasket size={30} />
           <span>{cart.length}</span>
         </div>
-      </div>
+      </Header>
       <ProductCart>
         <thead>
           <tr>
@@ -75,7 +75,7 @@ export default function CartComponent () {
               <td>
                 <img src={pokemon.image} alt={pokemon.name} />
               </td>
-              <td>
+              <td className="nameGroup">
                 <strong>{pokemon.name}</strong>
                 <span>{pokemon.priceFormated}</span>
               </td>
@@ -84,7 +84,7 @@ export default function CartComponent () {
                   <button type='button'>
                     <MdRemoveCircleOutline
                       size={20}
-                      color='#4B43A4'
+                      color='#00b341'
                       onClick={() => decrement(pokemon)}
                     />
                   </button>
@@ -92,7 +92,7 @@ export default function CartComponent () {
                   <button type='button'>
                     <MdAddCircleOutline
                       size={20}
-                      color='#4B43A4'
+                      color='#00b341'
                       onClick={() => increment(pokemon)}
                     />
                   </button>
@@ -105,7 +105,7 @@ export default function CartComponent () {
                 <button type='button'>
                   <MdDelete
                     size={20}
-                    color='#4B43A4'
+                    color='#ff2400'
                     onClick={() => dispatch(removeFromCart(pokemon.id))}
                   />
                 </button>

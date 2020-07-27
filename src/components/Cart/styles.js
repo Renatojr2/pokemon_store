@@ -26,25 +26,16 @@ margin-top: 60px;
   height: 400px ;
   
   }
->div {
-  display: flex;
-  padding: 12px;
-  justify-content: space-around;
-  align-items: center;
-  span {
-    font-size: 18px;
-    color: #00b341;
-  }
-  @media (max-width: 450px) {
-    padding: 8px;
-  }
-}
 
 footer {
   margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 450px) {
+    margin-top: 40px;
+  }
 
   button {
     background: #00b341;
@@ -62,7 +53,8 @@ footer {
     }
     @media (max-width: 450px) {
     padding: 6px 14px;
-    font-size: 12px;
+    font-size: 8px;
+
   }
 
   }
@@ -70,42 +62,78 @@ footer {
 
 `;
 
+export const Header = styled.div`
+  display: flex;
+  padding: 12px;
+  justify-content: space-around;
+  align-items: center;
+  span {
+    font-size: 18px;
+    color: #00b341;
+  }
+  @media (max-width: 450px) {
+    padding: 5px;
+  
+  }
+
+
+`;
+
 export const ProductCart = styled.table`
+
+thead {
+  @media (max-width: 450px) {
+    position: absolute;
+    top: 50px;
+    left: -8px;
+    
+  }
+}
 
 thead th {
   padding: 9px;
   text-align: center;
   color: #101010;
 
+
   @media (max-width: 1085px) {
   padding: 8px;
-  top: 0;
-  left: 0;
- 
   width: 30%;
   
   }
+
   @media (max-width: 450px) {
-  padding: 8px;
-  top: 0;
-  left: 0;
- 
+  margin-bottom: 30px;
   width: 5%;
+  padding-right: 26px ;
+
+
   
   }
 
+}
+tbody td.nameGroup {
+  @media (max-width: 450px) {
+    display: none;
+  
+  }
 }
 
 
 tbody td {
   padding: 9px;
   border-bottom: 1px solid #ccc;
+  
+
 }
+
 
 img {
   width: 80px;
+
   @media (max-width: 450px) {
-    width: 60px;
+    max-width: 40px;
+    height: 50px;
   
   }
 
@@ -122,6 +150,7 @@ span {
 
   font-size: 18px;
   font-weight: bold;
+
   @media (max-width: 450px) {
     font-size: 14px;
   }
